@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyPie Derby</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg  navbar-expand-md  navbar-expand-sm navbar-dark bg-dark text-white">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Hello {{loggedUser.first_name}}</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse w-25 text-white" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a href="/dashboard" class="mx-3 text-decoration-none text-white" >Dashboard</a>
+                <a class="mx-3 text-decoration-none text-white" href="/logout">Logout</a>
+            </div>
+          </div>
+      </nav>
+
+
+    <div class="row m-auto">
+        <div class="col-lg-12 p-5">
+            <h1 >All Community Requests</h1>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Request Creator</th>
+                    <th scope="col">Upvotes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for pie in pies %}
+                        <tr>
+                            <td>
+                                <a href="/show/{{pie.id}}">{{pie.name}}</a>
+                            </td>
+                            <td> {{ pie.first_name }}
+                            </td>
+                            <td>{{pie.num_votes}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+    
+</body>
+</html>

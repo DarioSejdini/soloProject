@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyPie Derby</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg  navbar-expand-md  navbar-expand-sm navbar-dark bg-dark text-white">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Hello {{loggedUser.first_name}}</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse w-25 text-white" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a href="/dashboard" class="btn btn-primary">Dashboard</a>
+                <a class="mx-3 text-decoration-none text-white" href="/logout">Logout</a>
+            </div>
+          </div>
+      </nav>
+
+    
+    <div class="w-50 m-auto p-5 border rounded  bg-light  mt-3 text-center">
+        <h2 class="text-center">{{pie.name}} by {{pie.first_name}} {{pie.last_name}}</h2>
+
+        <p class="text-center mt-2">Request Functionality: {{pie.filling}}</p>
+        <p class="text-center mt-2">Request Description: {{pie.crust}} </p>
+
+        {% if pieLiked %}
+        <p class="text-center mt-2">Remove your support for this functionality!</p>
+        {% else %}
+        <p class="text-center mt-2">Support functionality!</p>
+
+        {% endif %}
+        {% if pieLiked %}
+            <a class="btn btn-primary" href="/dislike/{{pie.id}}">Dislike</a>
+        {% else %}
+            <a class="btn btn-primary" href="/like/{{pie.id}}">Support</a>
+        {% endif %}
+    </div>
+</body>
+</html>
